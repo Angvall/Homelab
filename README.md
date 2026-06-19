@@ -1,2 +1,44 @@
 # Homelab
-Homelab 
+This is a guide to my homelab and how it works
+
+This is a wip and I named everything differently 
+
+## Overview
+
+Current project: writing this document
+
+
+## Faust (NAS)
+As of June 19th 2026 Faust is currently running on a basic truenas with no apps on it
+### Specs
+- CPU: Intel Core I5-7600 @ 3.50Ghz
+- Memory: 24GB
+- Disks
+  - CT1000BX500SSD1 SSD (Boot) (1TB) (will change bootdrive later)
+  - SKHynix_HFS001TEJ9X115N NVME (1TB)
+  - My Passport 2627 (1TB) filler storage
+
+## Yi Sang (ProxMox)
+As of June 19th 2026 Yi Sang manages services on my network
+### Specs
+- CPU: Intel Core I5-9600 @ 3.1GHz
+- Memory 24GB
+- Disks
+  - Sata 500GB (come back and edit these)
+### Services
+- Jellyfin (The data is hooked up to the NVME on Faust)
+- JellySeer
+- Radarr
+- Sonarr
+- Glance
+
+## Meursault (Switch) 
+### Cisco Catalyst 2960-X
+### What I've done with it
+- SSH into the switch
+- Named it
+- Reset password
+- Configured VLans
+
+# MISC (organize later)
+- Mullvad
