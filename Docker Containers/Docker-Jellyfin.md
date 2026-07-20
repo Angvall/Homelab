@@ -1,0 +1,26 @@
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+      - JELLYFIN_PublishedServerUrl=http://192.168.XXX.XXX #optional
+    volumes:
+      - ./config:/config
+      - /data:/data
+    devices:
+      - /dev/dri:/dev/dri #Use for Intel QuickSync
+    ports:
+      - 8096:8096
+      - 7359:7359/udp #Service Discovery
+      - 1900:1900/udp #Client Discovery
+    restart: unless-stopped
+  jellyseerr:
+    container_name: jellyseerr
+    image: ghcr.io/seerr-team/seerr:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      
