@@ -26,11 +26,14 @@ As of June 19th 2026 Yi Sang manages services on my network
 - Disks
   - Sata 500GB (come back and edit these)
 ### Services
-- Jellyfin (The data is hooked up to the NVME on Faust)
-- JellySeer
-- Radarr
-- Sonarr
-- Glance
+- <a href="https://jellyfin.org/">Jellyfin</a>
+- <a href="https://github.com/bluestreamclub/jellyseerr">JellySeer</a>
+- <a href="https://github.com/glanceapp/glance">Glance</a>
+- <a href="https://immich.app/">Immich</a>
+- <a href="https://github.com/passteque/gluetun">Gluetun</a>
+- <a href="https://tailscale.com/">Tailscale</a>
+- <a href="https://github.com/henrygd/beszel">Bezel</a>
+- <a href="https://get.kiwix.org/en/">Kiwix</a>
 
 ## Meursault (Switch) 
 ### Cisco Catalyst 2960-X
