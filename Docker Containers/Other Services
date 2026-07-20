@@ -1,0 +1,91 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun # If running on an LXC see readme for more info.
+    networks:
+      servarrnetwork:
+        ipv4_address: ${SET_IP_GLUETUN}
+    ports:
+      - 8080:8080 # qbittorrent web interface
+      - 6881:6881 # qbittorrent torrent port
+      - 6789:6789 # nzbget
+      - 9696:9696 # prowlarr
+      - 8191:8191 # flaresolverr
+    volumes:
+      - ./gluetun:/gluetun
+    env_file:
+      - .env
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 20s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  tailscale:
+    container_name: tailscale
+    image: tailscale/tailscale:latest
+    restart: always
+    volumes:
+     - ./tun:/dev/net/tun
+     - ./lib:/var/lib
+    environment:
+     - TS_AUTH_KEY=XXXXXXX
+     - TS_STATE_DIR=/var/lib/tailscale
+     - TS_ROUTES=172.17.10.0/24
+    network_mode: host
+    privileged: true
+
+  deunhealth:
+    image: qmcgaw/deunhealth
+    container_name: deunhealth
+    network_mode: "none"
+    environment:
+      - LOG_LEVEL=info
+      - HEALTH_SERVER_ADDRESS=127.0.0.1:9999
+      - TZ=${TZ}
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+ beszel:
+    image: henrygd/beszel
+    container_name: beszel
+    restart: unless-stopped
+    ports:
+      - 8090:8090
+    volumes:
+      - ./beszel_data:/beszel_data
+
+  beszel-agent:
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./beszel_agent_data:/var/lib/beszel-agent
+      # monitor other disks / partitions by mounting a folder in /extra-filesystems
+      # - /mnt/disk/.beszel:/extra-filesystems/sda1:ro
+    environment:
+      LISTEN: 45876
+      KEY: 'ssh-ed25519 XXXXXXX'
+      TOKEN: XXXXXXXXXXXXXXX
+      HUB_URL: http://192.168.XXX.XXX:8090
+
+  glance:
+    container_name: glance
+    image: glanceapp/glance
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+      - ./assets:/app/assets
+      - /etc/localtime:/etc/localtime:ro
+      # Optionally, also mount docker socket if you want to use the docker containers widget
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 9090:8080
+    env_file: .env
