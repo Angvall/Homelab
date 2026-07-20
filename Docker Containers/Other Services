@@ -5,16 +5,12 @@ services:
     cap_add:
       - NET_ADMIN
     devices:
-      - /dev/net/tun:/dev/net/tun # If running on an LXC see readme for more info.
+      - /dev/net/tun:/dev/net/tun
     networks:
       servarrnetwork:
         ipv4_address: ${SET_IP_GLUETUN}
     ports:
-      - 8080:8080 # qbittorrent web interface
-      - 6881:6881 # qbittorrent torrent port
-      - 6789:6789 # nzbget
       - 9696:9696 # prowlarr
-      - 8191:8191 # flaresolverr
     volumes:
       - ./gluetun:/gluetun
     env_file:
@@ -59,6 +55,22 @@ services:
       - 8090:8090
     volumes:
       - ./beszel_data:/beszel_data
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./prowlarr:/config
+    restart: unless-stopped
+    depends_on:
+      gluetun:
+        condition: service_healthy
+        restart: true
+    network_mode: service:gluetun
 
   beszel-agent:
     image: henrygd/beszel-agent
@@ -88,4 +100,3 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - 9090:8080
-    env_file: .env
