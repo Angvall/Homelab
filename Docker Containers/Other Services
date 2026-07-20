@@ -100,3 +100,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - 9090:8080
+
+
+# The following is botted up within a different VM in ProxMox
+  kiwix-serve:
+    ports:
+      - 8080:8080
+    image: gchr.io/Kiwix-serve:latest
+    volumes:
+      - /mnt/nas/zim:/data
+    command:
+      - '*.zim'
