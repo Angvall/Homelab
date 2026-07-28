@@ -5,7 +5,7 @@ This is a wip and I named everything differently
 
 ## Overview
 
-Current project: writing this document
+Current project: writing this document and add new services
 
 
 ## Faust (NAS)
@@ -43,5 +43,7 @@ As of June 19th 2026 Yi Sang manages services on my network
 - Reset password
 - Configured VLans
 
-# MISC (organize later)
-- Mullvad
+# To Do Soon
+- set up netbird
+- set up grafana (for more details statistics/data)
+- set up proxmox mail gateway
