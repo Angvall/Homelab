@@ -47,3 +47,5 @@ As of June 19th 2026 Yi Sang manages services on my network
 - set up netbird
 - set up grafana (for more details statistics/data)
 - set up proxmox mail gateway
+- rackpeek for documentation
+- work on more automation/monitoring
