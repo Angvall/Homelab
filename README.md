@@ -8,11 +8,12 @@ This page is a wip
 Currently working on:
 - writing this document
 - adding new services onto the homelab
-- Hopefully find a way to unbrick my SAS HBA card 
+- Hopefully find a way to unbrick my SAS HBA card
+- Set up Proxmox Mail Gateway
 
 
 ## Faust (NAS)
-As of June 19th 2026 Faust is currently running on a basic truenas with no apps on it
+As of June 19th 2026 Faust is currently running on a Truenas Community Edition with no apps on it
 ### Specs
 - CPU: Intel Core I5-7600 @ 3.50Ghz
 - Memory: 24GB
@@ -22,7 +23,7 @@ As of June 19th 2026 Faust is currently running on a basic truenas with no apps 
   - My Passport 2627 (1TB) filler storage
 
 ## Yi Sang (ProxMox)
-As of June 19th 2026 Yi Sang manages services on my network
+As of June 19th 2026 Yi Sang manages services on my network and is running on ProxMox Virtual Enviroment
 ### Specs
 - CPU: Intel Core I5-9600 @ 3.1GHz
 - Memory 24GB
