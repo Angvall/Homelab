@@ -1,11 +1,14 @@
 # Homelab
 This is a guide to my homelab and how it works
 
-This is a wip and I named everything differently 
+This page is a wip
 
 ## Overview
 
-Current project: writing this document and add new services
+Currently working on:
+- writing this document
+- adding new services onto the homelab
+- Hopefully find a way to unbrick my SAS HBA card 
 
 
 ## Faust (NAS)
@@ -24,7 +27,7 @@ As of June 19th 2026 Yi Sang manages services on my network
 - CPU: Intel Core I5-9600 @ 3.1GHz
 - Memory 24GB
 - Disks
-  - Sata 500GB (come back and edit these)
+  - Sata 500GB WD
 ### Services
 - <a href="https://jellyfin.org/">Jellyfin</a>
 - <a href="https://github.com/bluestreamclub/jellyseerr">JellySeer</a>
@@ -44,9 +47,9 @@ As of June 19th 2026 Yi Sang manages services on my network
 - Configured VLans
 
 # To Do Soon
-- set up netbird
+- set up netbird (self hosted)
 - set up grafana (for more details statistics/data)
 - set up proxmox mail gateway
 - rackpeek for documentation
 - work on more automation/monitoring
-- add images
+- add images to the github
