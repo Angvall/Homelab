@@ -50,6 +50,7 @@ As of June 19th 2026 Yi Sang manages services on my network and is running on Pr
 # To Do Soon
 - set up netbird (self hosted)
 - set up grafana (for more details statistics/data)
+- set up matrix
 - set up proxmox mail gateway
 - rackpeek for documentation
 - work on more automation/monitoring
