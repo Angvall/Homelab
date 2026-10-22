@@ -8,7 +8,6 @@ This page is a wip
 Currently working on:
 - writing this document
 - adding new services onto the homelab
-- Hopefully find a way to unbrick my SAS HBA card
 - Set up Proxmox Mail Gateway
 
 
